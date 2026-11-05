@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashanda Lite 🚬🚭</title>
+    <!-- Tailwind CSS (To'g'ridan-to'g'ri internetdan ulanadi) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes bounce-short {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-sakrash {
+            animation: bounce-short 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white min-h-screen flex flex-col items-center justify-center p-4 font-sans">
+
+    <div class="bg-slate-100 p-8 rounded-3xl shadow-2xl max-w-lg w-full text-center relative overflow-hidden border-4 border-slate-700">
+        <!-- Yuqoridagi chiroyli chiziq -->
+        <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+
+        <h1 class="text-4xl font-extrabold text-slate-800 mb-2 mt-4 tracking-tight">Kashanda Lite 🚭</h1>
+        <p class="text-slate-500 mb-8 font-medium">Kundalik nazorat tizimi</p>
+
+        <!-- Qarz hisoblagich -->
+        <div class="mb-8 p-4 bg-orange-100 rounded-2xl border-2 border-orange-300 transform rotate-1 hover:rotate-0 transition duration-300">
+            <p class="text-orange-800 font-bold text-lg">
+                Sening Madinadan Fuse Tea qarzing: 
+                <span id="qarzHisob" class="block text-4xl mt-2 font-black text-orange-600">0 ta 🥤</span>
+            </p>
+        </div>
+
+        <div class="space-y-4">
+            <button onclick="chekdim()" class="w-full bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-rose-500/30 text-lg">
+                Men yana chekdim 🤦‍♂️
+            </button>
+            
+            <button onclick="chidadim()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/30 text-lg">
+                Bugun umuman chekmadim 💪
+            </button>
+        </div>
+
+        <!-- Xabar chiqadigan joy (Boshida yashirin) -->
+        <div id="xabarBloki" class="mt-8 p-5 rounded-2xl border-2 hidden transition-all duration-300 shadow-inner">
+            <p id="xabarMatni" class="text-lg font-bold"></p>
+        </div>
+    </div>
+
+    <p class="mt-8 text-slate-400 text-sm font-medium">Madina tomonidan "do'stona" tayyorlandi ✌️</p>
+
+    <!-- Asosiy dastur mantig'i -->
+    <script>
+        let qarz = 0;
+        const xabarBloki = document.getElementById('xabarBloki');
+        const xabarMatni = document.getElementById('xabarMatni');
+        const qarzHisob = document.getElementById('qarzHisob');
+
+        function xabarniChiqarish(xabarlar, rangClasslar) {
+            // Qarzni oshirish (Qaysi tugmani bossa ham qarz oshadi 🤣)
+            qarz++;
+            qarzHisob.innerText = qarz + " ta 🥤";
+            
+            // Tasodifiy xabarni tanlash
+            const randomXabar = xabarlar[Math.floor(Math.random() * xabarlar.length)];
+            xabarMatni.innerText = randomXabar;
+            
+            // Xabar blokini ko'rsatish va ranglarni berish
+            xabarBloki.className = `mt-8 p-5 rounded-2xl border-2 transition-all duration-300 shadow-inner block animate-sakrash ${rangClasslar}`;
+            
+            // Animatsiyani tozalash (keyingi safar yana sakrashi uchun)
+            setTimeout(() => {
+                xabarBloki.classList.remove('animate-sakrash');
+            }, 500);
+        }
+
+        function chekdim() {
+            const jarimalar = [
+                "Qo'lga tushding! Ertaga Madinaga bitta muzdek Fuse Tea olib kelasan! 🥤",
+                "Yana-ya?! O'pkani ado qilding. Qani, Madinaga bitta katta Fuse Tea va shokolad tayyorla! 🍫",
+                "Shtraf: 666 ming so'm yoki Madinaga 3 ta Fuse Tea! Tanlov o'zingda. 🤣",
+                "O'pka yig'layapti... Madinani bitta Fuse Teasi ham yig'layapti, olib bermasang bo'lmaydi!"
+            ];
+            xabarniChiqarish(jarimalar, "bg-red-100 text-red-700 border-red-400");
+        }
+
+        function chidadim() {
+            const maqtovlar = [
+                "Malades! Lekin bu xursandchilikni nishonlash uchun Madinaga bitta Fuse Tea olib bersang zo'r bo'lardi 🤣",
+                "Irodangga qoyil! Endi shu tejalgan pulga Madinaga Fuse Tea olib berasan-a? 😉",
+                "Kashanda lite'dan sog'lom odamga aylanyapsan! Madina buni bitta Fuse Tea bilan tabriklashga tayyor (puli sendan).",
+                "Zo'r! Chekmaganing uchun priz: Madinaga Fuse Tea olib berish huquqini qo'lga kiritding! 🎉"
+            ];
+            xabarniChiqarish(maqtovlar, "bg-emerald-100 text-emerald-700 border-emerald-400");
+        }
+    </script>
+</body>
+</html>
